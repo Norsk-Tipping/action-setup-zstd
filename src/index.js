@@ -6,15 +6,17 @@ const zstdVersion = '1.5.2'
 async function setup() {
     try {
         let toolPath = tc.find('zstd', zstdVersion)
+        core.info(`toolPath: ${toolPath}`)
         if (toolPath) {
             core.info(`Found zstd in tool cache at ${toolPath}`)
         } else {
-            toolPath = await tc.cacheFile('dist/zstd', 'zstd', zstdVersion)
+            core.info(`zstd not found in tool cache, adding file`)
+            toolPath = await tc.cacheFile('dist/zstd', 'zstd', 'zstd', zstdVersion )
         }
         core.addPath(toolPath)
-        core.info(`zstd installed to ${toolPath}`)
+        core.info(`zstd available at ${toolPath}`)
     } catch (error) {
-        core.setFailed(error.message)
+        core.setFailed(error)
     }
 }
 module.exports = setup
