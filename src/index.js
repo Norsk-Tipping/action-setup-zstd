@@ -6,7 +6,6 @@ const zstdVersion = '1.5.2'
 async function setup() {
     try {
         let toolPath = tc.find('zstd', zstdVersion)
-        core.info(`toolPath: ${toolPath}`)
         if (toolPath) {
             core.info(`Found zstd in tool cache at ${toolPath}`)
         } else {
