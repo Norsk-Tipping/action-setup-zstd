@@ -18,7 +18,7 @@ async function setup() {
             }
         };
  */
-        await exec.exec('echo "pwd: $(pwd)"')
+        await exec.exec('pwd')
         await exec.exec('find / -name zstd')
         console.log(`myOutput: ${myOutput}`)
         console.log(`myError: ${myError}`)
