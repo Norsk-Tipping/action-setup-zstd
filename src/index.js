@@ -1,15 +1,18 @@
 const core = require('@actions/core')
 const tc = require('@actions/tool-cache')
-const exec = require('@actions/exec')
+
 const zstdVersion = '1.5.2'
-const tools = ['zsdt', 'zstdmt']
+const tools = ['zstd', 'zstdmt']
 
 async function setup() {
 
     // debug stuff to find binary within action
+    /*
+    const exec = require('@actions/exec')
     await exec.exec('pwd')
     await exec.exec('find /home/runner -name zstd')
-    
+    */
+
     tools.forEach(async function (toolName) {
         try {
             let toolPath = tc.find(toolName, zstdVersion)
