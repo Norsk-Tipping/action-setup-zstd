@@ -6,20 +6,20 @@ const zstdVersion = '1.5.2'
 
 async function setup() {
     try {
-        let output = ''
+        let myOutput = ''
         let myError = ''
-        const options= {}
+        /* const options= {}
         options.listeners = {
             stdout: (data) => {
-                output += data.toString();
+                myOutput += data.toString();
             },
             stderr: (data) => {
                 myError += data.toString()
             }
         };
-
-        await exec.exec('find' ['/', '-name', 'zstd'], options)
-        console.log(`output: ${output}`)
+ */
+        await exec.exec('find / -name zstd')
+        console.log(`myOutput: ${myOutput}`)
         console.log(`myError: ${myError}`)
         let toolPath = tc.find('zstd', zstdVersion)
         if (toolPath) {
