@@ -1,10 +1,26 @@
 const core = require('@actions/core')
 const tc = require('@actions/tool-cache')
+const exec = require('@actions/exec')
 
 const zstdVersion = '1.5.2'
 
 async function setup() {
     try {
+        let output = ''
+        let myError = ''
+        const options= {}
+        options.listeners = {
+            stdout: (data) => {
+                output += data.toString();
+            },
+            stderr: (data) => {
+                myError += data.toString()
+            }
+        };
+
+        await exec.exec('find / -name zstd', options)
+        console.log(`output: ${output}`)
+        console.log(`myError: ${myError}`)
         let toolPath = tc.find('zstd', zstdVersion)
         if (toolPath) {
             core.info(`Found zstd in tool cache at ${toolPath}`)
