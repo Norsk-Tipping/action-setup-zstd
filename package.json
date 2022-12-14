@@ -1,0 +1,19 @@
+{
+  "name": "action-setup-zstd",
+  "version": "1.0.0",
+  "description": "Install zstd",
+  "main": "src/index.js",
+  "repository": "git@github.com:Norsk-Tipping/action-setup-zstd.git",
+  "author": "Erik Weber <erik.weber@norsk-tipping.no>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "ncc build src/index.js -m"
+  },
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/tool-cache": "^1.7.2"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.33.3"
+  }
+}
