@@ -18,7 +18,7 @@ async function setup() {
             }
         };
 
-        await exec.exec('find / -name zstd', options)
+        await exec.exec('find' ['/', '-name', 'zstd'], options)
         console.log(`output: ${output}`)
         console.log(`myError: ${myError}`)
         let toolPath = tc.find('zstd', zstdVersion)
